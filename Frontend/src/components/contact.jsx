@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 
-function contact() {
+function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const handleInputChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
+    const { name, value } = e.target; // Use 'name' instead of 'id' for consistency
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/save-to-excel', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/save-to-excel`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
+      const result = await response.json();
       if (response.ok) {
-        alert('Form submitted successfully!');
-        setFormData({ name: '', email: '', message: '' });
+        alert(result.message); // Success message
+        setFormData({ name: '', email: '', message: '' }); // Reset form
       } else {
-        alert('Failed to submit the form.');
+        alert(result.message); // Error message
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -106,10 +107,12 @@ function contact() {
               <input
                 type="text"
                 id="name"
+                name="name" // Use 'name' attribute for consistency with backend
                 value={formData.name}
                 onChange={handleInputChange}
                 className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-pink-600"
                 placeholder="Your Name"
+                required
               />
             </div>
             <div className="mb-6">
@@ -119,10 +122,12 @@ function contact() {
               <input
                 type="email"
                 id="email"
+                name="email" // Use 'name' attribute for consistency with backend
                 value={formData.email}
                 onChange={handleInputChange}
                 className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-pink-600"
                 placeholder="Your Email"
+                required
               />
             </div>
             <div className="mb-6">
@@ -131,11 +136,13 @@ function contact() {
               </label>
               <textarea
                 id="message"
+                name="message" // Use 'name' attribute for consistency with backend
                 rows="4"
                 value={formData.message}
                 onChange={handleInputChange}
                 className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-pink-600"
                 placeholder="Your Message"
+                required
               ></textarea>
             </div>
             <button
@@ -151,4 +158,4 @@ function contact() {
   );
 }
 
-export default contact;
+export default Contact;
