@@ -1,12 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body style="background-color: black;">
+  <body
+    style="
+      background-color: black;
+      background-image: url('./dilu.png');
+      background-size: 45%; /* Adjusted size to 30% of the container */
+      background-repeat: no-repeat;
+      background-position: right bottom; /* Positioned at bottom-right */
+      background-attachment: fixed; /* Makes the background fixed */
+      height: 100vh;
+      margin: 0;
+      margin-top: 4px;
+    "
+  >
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

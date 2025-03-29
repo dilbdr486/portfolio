@@ -1,8 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Logo from "./dilu.jpg";
+import About from "./about";
+import Services from "./myServices";
+import Work from "./myWork";
+import Contact from "./contact";
 
 function navbar() {
+  const scrollToSection = (id, event) => {
+    event.preventDefault(); // Prevent default NavLink behavior
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className="sticky top-0 py-4 flex items-center justify-between z-50">
       <div className="container mx-auto px-4 lg:px-8">
@@ -20,7 +31,8 @@ function navbar() {
                 before:w-0 before:h-1 before:bg-red-500 before:transition-all before:duration-300 hover:before:w-full"
               >
                 <NavLink
-                  to="/graphics"
+                  to="/"
+                  onClick={(e) => scrollToSection("home", e)}
                   className={({ isActive }) =>
                     `block duration-200 ${
                       isActive
@@ -38,7 +50,8 @@ function navbar() {
                 before:w-0 before:h-1 before:bg-red-500 before:transition-all before:duration-300 hover:before:w-full"
               >
                 <NavLink
-                  to="/graphics"
+                  to="/about"
+                  onClick={(e) => scrollToSection("about", e)}
                   className={({ isActive }) =>
                     `block duration-200 ${
                       isActive
@@ -56,7 +69,8 @@ function navbar() {
                 before:w-0 before:h-1 before:bg-red-500 before:transition-all before:duration-300 hover:before:w-full"
               >
                 <NavLink
-                  to="/graphics"
+                  to="/services"
+                  onClick={(e) => scrollToSection("services", e)}
                   className={({ isActive }) =>
                     `block duration-200 ${
                       isActive
@@ -74,7 +88,8 @@ function navbar() {
                 before:w-0 before:h-1 before:bg-red-500 before:transition-all before:duration-300 hover:before:w-full"
               >
                 <NavLink
-                  to="/graphics"
+                  to="/portfolio"
+                  onClick={(e) => scrollToSection("mywork", e)}
                   className={({ isActive }) =>
                     `block duration-200 ${
                       isActive
@@ -92,7 +107,8 @@ function navbar() {
                  before:w-0 before:h-1 before:bg-red-500 before:transition-all before:duration-300 hover:before:w-full"
               >
                 <NavLink
-                  to="/graphics"
+                  to="/contact"
+                  onClick={(e) => scrollToSection("contact", e)}
                   className={({ isActive }) =>
                     `block duration-200 ${
                       isActive
@@ -107,13 +123,31 @@ function navbar() {
             </ul>
           </div>
         </div>
-        <div>
-          <div>right</div>
+        <div id="home" className="flex justify-between items-center h-screen">
+          <div className="text-white">
+            <h2 className="text-lg">Software Developer</h2>
+            <h1 className="text-3xl py-2 font-bold">
+              Hi, I'm <span className="text-pink-500">Dil Bahadur</span> <br />{" "}
+              Tharu from Kathmandu
+            </h1>
+          </div>
+          <div>
+            <NavLink to="/">
+              {/* <img src={Logo} height={200} width={620} className="mx-auto" /> */}
+            </NavLink>
+          </div>
         </div>
-        <div>
-          <NavLink to="/">
-            <img src={Logo} height={200} width={400} className="" />
-          </NavLink>
+        <div id="about">
+          <About />
+        </div>
+        <div id="services">
+          <Services />
+        </div>
+        <div id="mywork">
+          <Work />
+        </div>
+        <div id="contact">
+          <Contact />
         </div>
       </div>
     </nav>

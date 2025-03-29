@@ -10,7 +10,7 @@ function Layout() {
       <div className="flex-grow p-4"> {/* Content area with padding */}
         <Outlet />
       </div>
-      <Footer />
+      <Footer /> {/* Ensure Footer is properly rendered */}
     </div>
   );
 }
