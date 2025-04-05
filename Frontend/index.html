@@ -7,19 +7,27 @@
     <title>Vite + React</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body
-    style="
+  <style>
+    body {
       background-color: black;
       background-image: url('./dilu.png');
-      background-size: 45%; /* Adjusted size to 30% of the container */
+      background-size: 45%; /* Adjusted size */
       background-repeat: no-repeat;
-      background-position: right bottom; /* Positioned at bottom-right */
-      background-attachment: fixed; /* Makes the background fixed */
+      background-position: right bottom; /* Positioned at bottom-right by default */
+      background-attachment: fixed;
       height: 100vh;
       margin: 0;
       margin-top: 4px;
-    "
-  >
+    }
+
+    /* Responsive CSS for Mobile (center the background) */
+    @media (max-width: 640px) {
+      body {
+        background-position: center bottom; /* Center the background for small screens */
+        background-size: 100%; /* Optional: you can adjust the size for small screens if needed */
+      }
+    }
+  </style>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
