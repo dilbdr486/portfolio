@@ -9,7 +9,9 @@ export default function about() {
       case "skills":
         return (
           <div id="skills">
-            <p className="text-sm text-pink-500 mt-2">Chatbot & AI Powered ChatApp</p>
+            <p className="text-sm text-pink-500 mt-2">
+              Chatbot & AI Powered ChatApp
+            </p>
             <p className="text-lg">Chatbot Development</p>
             <p className="text-sm text-pink-500 mt-2">Web Development</p>
             <p className="text-lg">Web App Development</p>

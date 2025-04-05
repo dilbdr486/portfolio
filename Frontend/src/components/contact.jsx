@@ -1,40 +1,47 @@
-import React, { useState } from 'react';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa';
+import React, { useState } from "react";
+import { FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa";
 
 function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target; // Use 'name' instead of 'id' for consistency
+    const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/save-to-excel`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/save-to-excel`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
       const result = await response.json();
       if (response.ok) {
-        alert(result.message); // Success message
-        setFormData({ name: '', email: '', message: '' }); // Reset form
+        alert(result.message);
+        setFormData({ name: "", email: "", message: "" });
       } else {
-        alert(result.message); // Error message
+        alert(result.message);
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('An error occurred. Please try again.');
+      console.error("Error submitting form:", error);
+      alert("An error occurred. Please try again.");
     }
   };
 
   const handleDownloadCV = () => {
-    const cvPath = "/Resume-Dil.pdf"; // Path to your CV in the public folder
+    const cvPath = "/Resume-Dil.pdf";
     const link = document.createElement("a");
     link.href = cvPath;
-    link.download = "My_CV.pdf"; // Name of the downloaded file
+    link.download = "My_CV.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -43,7 +50,6 @@ function Contact() {
   return (
     <div id="contact" className="bg-black py-16">
       <div className="flex flex-col lg:flex-row justify-between items-start gap-16">
-        {/* Left Side: Contact Details */}
         <div className="text-white lg:w-1/2 space-y-6">
           <h1 className="text-3xl font-bold mb-6">Contact Information</h1>
           <p className="mb-4">Email: dtharu486@gmail.com</p>
@@ -85,7 +91,6 @@ function Contact() {
             Download CV
           </a>
         </div>
-        {/* Right Side: Get in Touch Form */}
         <div className="lg:w-1/2 w-full">
           <h2 className="text-3xl font-bold text-white mb-6">Get in Touch</h2>
           <form
@@ -99,7 +104,7 @@ function Contact() {
               <input
                 type="text"
                 id="name"
-                name="name" // Use 'name' attribute for consistency with backend
+                name="name"
                 value={formData.name}
                 onChange={handleInputChange}
                 className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-pink-600"
@@ -114,7 +119,7 @@ function Contact() {
               <input
                 type="email"
                 id="email"
-                name="email" // Use 'name' attribute for consistency with backend
+                name="email"
                 value={formData.email}
                 onChange={handleInputChange}
                 className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-pink-600"
@@ -128,7 +133,7 @@ function Contact() {
               </label>
               <textarea
                 id="message"
-                name="message" // Use 'name' attribute for consistency with backend
+                name="message"
                 rows="4"
                 value={formData.message}
                 onChange={handleInputChange}

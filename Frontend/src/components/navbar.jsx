@@ -23,9 +23,9 @@ function Navbar() {
   useEffect(() => {
     const interval = setInterval(() => {
       setLogo((prevLogo) => (prevLogo === Logo1 ? Logo2 : Logo1));
-    }, 3000); // Change logo every 3 seconds
+    }, 3000);
 
-    return () => clearInterval(interval); // Clean up interval on component unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -38,7 +38,7 @@ function Navbar() {
               <img
                 src={logo}
                 alt="Logo"
-                className="h-12 w-12 rounded-full object-cover transform scale-110" // Zoom the image
+                className="h-12 w-12 rounded-full object-cover transform scale-110"
               />
             </NavLink>
           </div>
@@ -53,7 +53,6 @@ function Navbar() {
                 viewBox="0 0 24 24"
               >
                 {isOpen ? (
-                  // 👇 This is the CROSS (X) icon
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -61,7 +60,6 @@ function Navbar() {
                     d="M6 18L18 6M6 6l12 12"
                   />
                 ) : (
-                  // 👇 This is the Hamburger icon
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -141,7 +139,6 @@ function Navbar() {
           </div>
         )}
 
-        {/* Hero Section */}
         <div
           id="home"
           className="flex flex-col lg:flex-row justify-between items-center h-screen"
@@ -155,7 +152,6 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Sections */}
         <div id="about">
           <About />
         </div>
