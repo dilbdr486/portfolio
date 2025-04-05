@@ -9,7 +9,7 @@ export default function about() {
       case "skills":
         return (
           <div id="skills">
-            <p className="text-sm text-pink-500 mt-2">Chatbot</p>
+            <p className="text-sm text-pink-500 mt-2">Chatbot & AI Powered ChatApp</p>
             <p className="text-lg">Chatbot Development</p>
             <p className="text-sm text-pink-500 mt-2">Web Development</p>
             <p className="text-lg">Web App Development</p>
@@ -41,18 +41,19 @@ export default function about() {
         return null;
     }
   };
+
   return (
-    <div className="flex justify-center text-white mt-12 bg-black py-16">
-      <div>
+    <div className="flex flex-col lg:flex-row justify-center text-white mt-12 bg-black py-16">
+      <div className="flex justify-center">
         <img
           src={My}
           height={200}
           width={700}
-          alt=""
+          alt="My Image"
           className="rounded-lg shadow-lg border-2 border-gray-300 mb-8"
         />
       </div>
-      <div className="ml-8 space-y-6">
+      <div className="ml-8 space-y-6 flex flex-col lg:w-1/2">
         <h1 className="text-3xl font-bold mb-6">About Me</h1>
         <p className="text-wrap text-justify leading-relaxed mb-6">
           I am a highly skilled Computer Engineer and Software Development
@@ -60,7 +61,7 @@ export default function about() {
           optimizing software solutions.
         </p>
         <div>
-          <ul className="flex gap-12 mt-6">
+          <ul className="flex gap-12 mt-6 flex-wrap justify-start lg:justify-start">
             <li
               className={`relative flex items-center text-white cursor-pointer before:absolute before:bottom-0 before:left-0 
                       before:w-0 before:h-1 before:bg-red-500 before:transition-all before:duration-300 hover:before:w-full ${

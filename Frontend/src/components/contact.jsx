@@ -31,7 +31,7 @@ function Contact() {
   };
 
   const handleDownloadCV = () => {
-    const cvPath = "/Dil-resume.pdf"; // Path to your CV in the public folder
+    const cvPath = "/Resume-Dil.pdf"; // Path to your CV in the public folder
     const link = document.createElement("a");
     link.href = cvPath;
     link.download = "My_CV.pdf"; // Name of the downloaded file
@@ -41,8 +41,8 @@ function Contact() {
   };
 
   return (
-    <div id="contact" className="bg-black">
-      <div className="flex flex-col lg:flex-row justify-between items-start gap-16 py-3">
+    <div id="contact" className="bg-black py-16">
+      <div className="flex flex-col lg:flex-row justify-between items-start gap-16">
         {/* Left Side: Contact Details */}
         <div className="text-white lg:w-1/2 space-y-6">
           <h1 className="text-3xl font-bold mb-6">Contact Information</h1>
@@ -53,7 +53,7 @@ function Contact() {
             <h3 className="text-2xl font-bold mb-6">Follow Me</h3>
             <div className="flex gap-6">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/dilbahadur.tharu.3576/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-pink-600 transition-colors duration-300"
@@ -61,15 +61,7 @@ function Contact() {
                 <FaFacebookF />
               </a>
               <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-pink-600 transition-colors duration-300"
-              >
-                <FaTwitter />
-              </a>
-              <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/dil123/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-pink-600 transition-colors duration-300"
@@ -77,7 +69,7 @@ function Contact() {
                 <FaLinkedinIn />
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/dilbdr486"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-pink-600 transition-colors duration-300"
@@ -94,7 +86,7 @@ function Contact() {
           </a>
         </div>
         {/* Right Side: Get in Touch Form */}
-        <div className="lg:w-1/2">
+        <div className="lg:w-1/2 w-full">
           <h2 className="text-3xl font-bold text-white mb-6">Get in Touch</h2>
           <form
             onSubmit={handleFormSubmit}

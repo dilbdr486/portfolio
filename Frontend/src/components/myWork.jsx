@@ -7,11 +7,11 @@ export default function myWork() {
   return (
     <div id="mywork" className="bg-black py-16 items-center">
       <h1 className="text-white text-4xl font-bold mb-12 text-center">My Work</h1>
-      <div className="flex justify-center items-center gap-8">
-        <div className="relative bg-pink-600 w-1/3 h-96 text-white text-lg font-semibold rounded-lg shadow-lg overflow-hidden group">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-8">
+        <div className="relative bg-pink-600 w-full lg:w-1/3 h-96 text-white text-lg font-semibold rounded-lg shadow-lg overflow-hidden group">
           <img
             src={Mobile}
-            alt=""
+            alt="Mobile Development"
             className="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-pink-600 bg-opacity-50 transition-transform duration-500 transform translate-y-full group-hover:translate-y-0"></div>
@@ -22,10 +22,10 @@ export default function myWork() {
             </button>
           </p>
         </div>
-        <div className="relative bg-pink-600 w-1/3 h-96 text-white text-lg font-semibold rounded-lg shadow-lg overflow-hidden group">
+        <div className="relative bg-pink-600 w-full lg:w-1/3 h-96 text-white text-lg font-semibold rounded-lg shadow-lg overflow-hidden group">
           <img
             src={Web}
-            alt=""
+            alt="Web Development"
             className="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-pink-600 bg-opacity-50 transition-transform duration-500 transform translate-y-full group-hover:translate-y-0"></div>
@@ -36,10 +36,10 @@ export default function myWork() {
             </button>
           </p>
         </div>
-        <div className="relative bg-pink-600 w-1/3 h-96 text-white text-lg font-semibold rounded-lg shadow-lg overflow-hidden group">
+        <div className="relative bg-pink-600 w-full lg:w-1/3 h-96 text-white text-lg font-semibold rounded-lg shadow-lg overflow-hidden group">
           <img
             src={Chatbot}
-            alt=""
+            alt="ML/LLM Development"
             className="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-pink-600 bg-opacity-50 transition-transform duration-500 transform translate-y-full group-hover:translate-y-0"></div>

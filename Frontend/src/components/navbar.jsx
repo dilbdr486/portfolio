@@ -1,142 +1,161 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import About from "./about";
 import Services from "./myServices";
 import Work from "./myWork";
 import Contact from "./contact";
+import Logo1 from "./logo1.png";
+import Logo2 from "./logo2.png";
 
-function navbar() {
+function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [logo, setLogo] = useState(Logo1);
+
   const scrollToSection = (id, event) => {
-    event.preventDefault(); // Prevent default NavLink behavior
+    event.preventDefault();
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
+      setIsOpen(false);
     }
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLogo((prevLogo) => (prevLogo === Logo1 ? Logo2 : Logo1));
+    }, 3000); // Change logo every 3 seconds
+
+    return () => clearInterval(interval); // Clean up interval on component unmount
+  }, []);
+
   return (
-    <nav className="sticky top-0 py-4 flex items-center justify-between z-50">
+    <nav className="sticky top-0 py-4 z-50">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex justify-between w-full">
+        <div className="flex justify-between items-center w-full relative">
+          {/* Logo */}
           <div className="flex items-center">
             <NavLink to="/">
-              <p className="text-white">logo</p>
-              {/* <img src={Logo} width={70} className="" /> */}
+              <img
+                src={logo}
+                alt="Logo"
+                className="h-12 w-12 rounded-full object-cover transform scale-110" // Zoom the image
+              />
             </NavLink>
           </div>
-          <div className="hidden lg:flex lg:space-x-6 lg:justify-between lg:items-center">
+
+          {/* Hamburger / Cross Toggle Button */}
+          <div className="lg:hidden z-50">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-white">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {isOpen ? (
+                  // 👇 This is the CROSS (X) icon
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  // 👇 This is the Hamburger icon
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
+
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex lg:space-x-6 lg:items-center">
             <ul className="flex space-x-6">
-              <li
-                className="relative flex items-center text-white cursor-pointer before:absolute before:bottom-0 before:left-0 
-                before:w-0 before:h-1 before:bg-red-500 before:transition-all before:duration-300 hover:before:w-full"
-              >
-                <NavLink
-                  to="/"
-                  onClick={(e) => scrollToSection("home", e)}
-                  className={({ isActive }) =>
-                    `block duration-200 ${
-                      isActive
-                        ? "underline decoration-red-500 decoration-4"
-                        : ""
-                    }`
-                  }
+              {[
+                { label: "Home", id: "home", to: "/" },
+                { label: "About", id: "about", to: "/about" },
+                { label: "Services", id: "services", to: "/services" },
+                { label: "Portfolio", id: "mywork", to: "/portfolio" },
+                { label: "Contact", id: "contact", to: "/contact" },
+              ].map(({ label, id, to }) => (
+                <li
+                  key={id}
+                  className="relative flex items-center text-white cursor-pointer before:absolute before:bottom-0 before:left-0 
+                  before:w-0 before:h-1 before:bg-red-500 before:transition-all before:duration-300 hover:before:w-full py-2"
                 >
-                  Home
-                </NavLink>
-              </li>
-
-              <li
-                className="relative flex items-center text-white cursor-pointer before:absolute before:bottom-0 before:left-0 
-                before:w-0 before:h-1 before:bg-red-500 before:transition-all before:duration-300 hover:before:w-full"
-              >
-                <NavLink
-                  to="/about"
-                  onClick={(e) => scrollToSection("about", e)}
-                  className={({ isActive }) =>
-                    `block duration-200 ${
-                      isActive
-                        ? "underline decoration-red-500 decoration-4"
-                        : ""
-                    }`
-                  }
-                >
-                  About
-                </NavLink>
-              </li>
-
-              <li
-                className="relative flex items-center text-white cursor-pointer before:absolute before:bottom-0 before:left-0 
-                before:w-0 before:h-1 before:bg-red-500 before:transition-all before:duration-300 hover:before:w-full"
-              >
-                <NavLink
-                  to="/services"
-                  onClick={(e) => scrollToSection("services", e)}
-                  className={({ isActive }) =>
-                    `block duration-200 ${
-                      isActive
-                        ? "underline decoration-red-500 decoration-4"
-                        : ""
-                    }`
-                  }
-                >
-                  Services
-                </NavLink>
-              </li>
-
-              <li
-                className="relative flex items-center text-white cursor-pointer before:absolute before:bottom-0 before:left-0 
-                before:w-0 before:h-1 before:bg-red-500 before:transition-all before:duration-300 hover:before:w-full"
-              >
-                <NavLink
-                  to="/portfolio"
-                  onClick={(e) => scrollToSection("mywork", e)}
-                  className={({ isActive }) =>
-                    `block duration-200 ${
-                      isActive
-                        ? "underline decoration-red-500 decoration-4"
-                        : ""
-                    }`
-                  }
-                >
-                  Portfolio
-                </NavLink>
-              </li>
-
-              <li
-                className="relative flex items-center text-white cursor-pointer before:absolute before:bottom-0 before:left-0 
-                 before:w-0 before:h-1 before:bg-red-500 before:transition-all before:duration-300 hover:before:w-full"
-              >
-                <NavLink
-                  to="/contact"
-                  onClick={(e) => scrollToSection("contact", e)}
-                  className={({ isActive }) =>
-                    `block duration-200 ${
-                      isActive
-                        ? "underline decoration-red-500 decoration-4"
-                        : ""
-                    }`
-                  }
-                >
-                  Contact
-                </NavLink>
-              </li>
+                  <NavLink
+                    to={to}
+                    onClick={(e) => scrollToSection(id, e)}
+                    className={({ isActive }) =>
+                      `block duration-200 ${
+                        isActive
+                          ? "underline decoration-red-500 decoration-4"
+                          : ""
+                      }`
+                    }
+                  >
+                    {label}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
-        <div id="home" className="flex justify-between items-center h-screen">
-          <div className="text-white">
+
+        {isOpen && (
+          <div className="lg:hidden absolute top-12 left-0 w-full bg-black bg-opacity-0 px-4 py-4 z-50">
+            <ul className="flex flex-col items-end text-right space-y-4">
+              {[
+                { label: "Home", id: "home", to: "/" },
+                { label: "About", id: "about", to: "/about" },
+                { label: "Services", id: "services", to: "/services" },
+                { label: "Portfolio", id: "mywork", to: "/portfolio" },
+                { label: "Contact", id: "contact", to: "/contact" },
+              ].map(({ label, id, to }) => (
+                <li
+                  key={id}
+                  className="relative text-white cursor-pointer before:absolute before:bottom-0 before:right-0 
+          before:w-0 before:h-1 before:bg-red-500 before:transition-all before:duration-300 hover:before:w-full"
+                >
+                  <NavLink
+                    to={to}
+                    onClick={(e) => scrollToSection(id, e)}
+                    className={({ isActive }) =>
+                      `block duration-200 ${
+                        isActive
+                          ? "underline decoration-red-500 decoration-4"
+                          : ""
+                      }`
+                    }
+                  >
+                    {label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Hero Section */}
+        <div
+          id="home"
+          className="flex flex-col lg:flex-row justify-between items-center h-screen"
+        >
+          <div className="text-white text-center lg:text-left">
             <h2 className="text-lg">Software Developer</h2>
             <h1 className="text-3xl py-2 font-bold">
-              Hi, I'm <span className="text-pink-500">Dil Bahadur</span> <br />{" "}
+              Hi, I'm <span className="text-pink-500">Dil Bahadur</span> <br />
               Tharu from Kathmandu
             </h1>
           </div>
-          <div>
-            <NavLink to="/">
-              {/* <img src={Logo} height={200} width={620} className="mx-auto" /> */}
-            </NavLink>
-          </div>
         </div>
+
+        {/* Sections */}
         <div id="about">
           <About />
         </div>
@@ -154,4 +173,4 @@ function navbar() {
   );
 }
 
-export default navbar;
+export default Navbar;
