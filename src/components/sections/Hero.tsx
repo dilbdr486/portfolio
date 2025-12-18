@@ -102,7 +102,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="fixed right-7 top-1/2 z-20 flex -translate-y-1/2 flex-col items-center gap-6">
+      <div className="absolute right-7 top-1/2 z-20 flex -translate-y-1/2 flex-col items-center gap-6">
         {socials.map((social) => (
           <a
             key={social.label}
@@ -115,7 +115,7 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="fixed bottom-6 right-6 z-20 flex items-end gap-4">
+      <div className="absolute bottom-6 right-6 z-20 flex items-end gap-4">
         <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-black/40 backdrop-blur-md">
           Chat with us
         </div>

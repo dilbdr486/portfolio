@@ -16,23 +16,23 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Harigurus",
-    subtitle: "Event Booking",
+    title: "AI Chat Bot",
+    subtitle: "CrawlDocQA",
     description:
-      "A one-stop-shop for Hindu religious, customs and traditional requirements. Built the complete site end-to-end.",
+      "CrawlDocQA is a smart app that crawls documents and websites to let users ask questions and get instant, accurate answers.It turns scattered content into a simple, searchable knowledge experience.",
     tags: [
       "react.js",
       "express.js",
       "node.js",
-      "swiper.js",
+      "LLM",
       "mongoDB",
-      "mongoose",
-      "css",
-      "javascript",
-      "figma",
+      "Langchain",
+      "Vector Database",
+      "RAG Model",
+      "NLP",
     ],
-    align: "right",
-    image: { src: "/globe.svg", alt: "Harigurus project preview" },
+    align: "left",
+    image: { src: "/aiChatBot.png", alt: "Harigurus project preview" },
   },
   {
     title: "EazyGrad",
@@ -52,7 +52,7 @@ const projects: Project[] = [
       "lighthouse",
       "figma",
     ],
-    align: "left",
+    align: "right",
     image: { src: "/window.svg", alt: "EazyGrad project preview" },
   },
 ];
@@ -61,32 +61,38 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative mx-auto max-w-6xl px-6 py-16 sm:px-10 lg:py-24"
+      className="relative w-full overflow-hidden px-6 pt-10 pb-20 sm:px-10 lg:pb-24"
     >
-      <div className="mb-12 text-center">
-        <h2 className="inline-flex items-center gap-3 rounded-full border border-[#36a5b5]/30 bg-white px-6 py-2 text-lg font-bold text-[#1f7a8c]">
-          <span className="h-2 w-2 rounded-full bg-[#1f7a8c]" />
-          Latest Works
-          <span className="h-2 w-2 rounded-full bg-[#1f7a8c]" />
-        </h2>
+      <div className="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-[#1f7a8c]" />
+      <div className="mb-12 -mt-12 flex justify-center">
+        <div className="relative inline-flex items-center justify-center border-[3px] border-[#1f7a8c] bg-white px-10 py-3 shadow-sm">
+          <h2 className="text-4xl font-extrabold tracking-tight text-[#1f7a8c]">
+            Latest Works
+          </h2>
+        </div>
       </div>
 
       <div className="relative">
-        <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-linear-to-b from-transparent via-white/20 to-transparent" />
-
         <div className="flex flex-col gap-24">
           {projects.map((project, idx) => {
-            const isRight = project.align === "right";
+            const isImageLeft = idx % 2 === 0;
+
             return (
               <div
                 key={project.title}
-                className={`relative grid items-center gap-10 lg:grid-cols-2 ${
-                  isRight ? "lg:[&>*:first-child]:order-2" : ""
-                }`}
+                className="relative grid items-center gap-10 lg:grid-cols-2"
               >
+                <span
+                  className={`pointer-events-none absolute top-1/2 hidden h-[3px] w-1/2 -translate-y-1/2 bg-[#f6a192] lg:block ${
+                    isImageLeft ? "right-1/2" : "left-1/2"
+                  }`}
+                />
+
                 <div
                   className={`relative flex justify-center ${
-                    isRight ? "lg:justify-end" : "lg:justify-start"
+                    isImageLeft
+                      ? "lg:order-1 lg:justify-start"
+                      : "lg:order-2 lg:justify-end"
                   }`}
                 >
                   <div className="relative rounded-3xl border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/40 backdrop-blur">
@@ -104,7 +110,7 @@ export default function Projects() {
                       </div>
                       <div className="relative bg-[#0b0d13]">
                         <div className="absolute inset-0 bg-linear-to-br from-[#0b0d13] via-[#0f121c] to-[#0b0d13]" />
-                        <div className="relative flex items-center justify-center p-8">
+                        <div className="relative flex items-center justify-center p-2">
                           <Image
                             src={project.image.src}
                             alt={project.image.alt}
@@ -117,28 +123,31 @@ export default function Projects() {
                       </div>
                     </div>
                   </div>
-                  <span className="absolute left-1/2 top-1/2 hidden h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white/60 bg-[#0f1116] lg:block" />
                 </div>
+
+                <span className="pointer-events-none absolute left-1/2 top-1/2 hidden h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-white bg-[#f9735b] shadow-md lg:block" />
 
                 <div
                   className={`space-y-4 ${
-                    isRight ? "lg:text-left" : "lg:text-left"
+                    isImageLeft
+                      ? "lg:order-2 lg:text-left"
+                      : "lg:order-1 lg:text-left"
                   }`}
                 >
                   <div className="inline-flex items-center gap-2 rounded-full bg-[#f2994a]/15 px-4 py-2 text-sm font-semibold text-[#f2994a]">
                     {project.subtitle}
                   </div>
-                  <h3 className="text-3xl font-bold text-white sm:text-4xl">
+                  <h3 className="text-3xl font-bold text-black sm:text-4xl">
                     {project.title}
                   </h3>
-                  <p className="text-base leading-relaxed text-white/75">
+                  <p className="text-base leading-relaxed text-black/75">
                     {project.description}
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm font-semibold text-white/80"
+                        className="rounded-full border border-white/10 bg-white/5 py-1.5 text-sm font-semibold text-black"
                       >
                         #{tag}
                       </span>
