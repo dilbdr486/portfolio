@@ -63,12 +63,12 @@ export default function AboutOverlay({ open, onClose }: AboutOverlayProps) {
                 "express.js",
                 "mongoDB",
                 "mongoose",
-                "aws",
                 "html",
                 "css",
                 "tailwind",
                 "bootstrap",
-                "figma",
+                "langchain",
+                "openaiAPI",
               ].map((tag) => (
                 <span
                   key={tag}
@@ -83,11 +83,11 @@ export default function AboutOverlay({ open, onClose }: AboutOverlayProps) {
               <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#21b1c0]">
                 MERN Stack
               </p>
-              <div className="flex flex-wrap items-center gap-6 text-xl font-bold">
-                <TechBadge label="Mongo" />
-                <TechBadge label="Express" />
-                <TechBadge label="React" />
-                <TechBadge label="Node" />
+              <div className="flex flex-wrap items-center gap-6 text-xl font-bold cursor-pointer">
+                <TechBadge label="M" full="MongoDB" />
+                <TechBadge label="E" full="Express.js" />
+                <TechBadge label="R" full="React.js" />
+                <TechBadge label="N" full="Node.js" />
               </div>
             </div>
           </div>
@@ -130,10 +130,15 @@ export default function AboutOverlay({ open, onClose }: AboutOverlayProps) {
   );
 }
 
-function TechBadge({ label }: { label: string }) {
+function TechBadge({ label, full }: { label: string; full: string }) {
   return (
-    <span className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white">
-      {label}
+    <span className="group relative inline-flex flex-col items-center">
+      <span className="rounded-2xl border border-white/10 bg-white/5 px-12 py-1 text-white">
+        {label}
+      </span>
+      <span className="pointer-events-none absolute -top-10 left-1/2 w-max -translate-x-1/2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#111827] opacity-0 shadow-lg shadow-black/40 transition-opacity duration-150 group-hover:opacity-100">
+        {full}
+      </span>
     </span>
   );
 }

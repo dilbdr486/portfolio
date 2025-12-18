@@ -64,7 +64,7 @@ export default function Projects() {
       className="relative mx-auto max-w-6xl px-6 py-16 sm:px-10 lg:py-24"
     >
       <div className="mb-12 text-center">
-        <h2 className="inline-flex items-center gap-3 rounded-full border border-[#36a5b5]/30 bg-[#36a5b5]/10 px-6 py-2 text-lg font-bold text-[#1f7a8c]">
+        <h2 className="inline-flex items-center gap-3 rounded-full border border-[#36a5b5]/30 bg-white px-6 py-2 text-lg font-bold text-[#1f7a8c]">
           <span className="h-2 w-2 rounded-full bg-[#1f7a8c]" />
           Latest Works
           <span className="h-2 w-2 rounded-full bg-[#1f7a8c]" />
