@@ -1,5 +1,6 @@
 "use client";
 
+import ContactSection from "@/components/sections/contact";
 import { Hero } from "@/components/sections/Hero";
 import Projects from "@/components/sections/Projects";
 
@@ -11,6 +12,7 @@ export default function Home() {
       {/* Projects on their own background */}
       <section className="relative bg-white">
         <Projects />
+        <ContactSection/>
       </section>
     </div>
   );
