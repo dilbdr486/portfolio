@@ -2,12 +2,20 @@
 
 import Image from "next/image";
 
+type ProjectTheme = {
+  primary: string; // main color
+  accent: string; // badges / dots
+  line: string; // timeline line
+  chipBg: string; // subtitle bg
+};
+
 type Project = {
   title: string;
   subtitle: string;
   description: string;
   tags: string[];
   align: "left" | "right";
+  theme?: ProjectTheme;
   image: {
     src: string;
     alt: string;
@@ -16,8 +24,8 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "AI Chat Bot",
-    subtitle: "CrawlDocQA",
+    title: "CrawlDocQA",
+    subtitle: "AI-Powered Document & Website Q&A App",
     description:
       "CrawlDocQA is a smart app that crawls documents and websites to let users ask questions and get instant, accurate answers.It turns scattered content into a simple, searchable knowledge experience.",
     tags: [
@@ -32,28 +40,67 @@ const projects: Project[] = [
       "NLP",
     ],
     align: "left",
-    image: { src: "/aiChatBot.png", alt: "Harigurus project preview" },
+    theme: {
+      primary: "#1f7a8c",
+      accent: "#1f7a8c",
+      line: "#1f7a8c",
+      chipBg: "rgba(31,122,140,0.15)",
+    },
+    image: { src: "/aiChatBot.png", alt: "ai chatbot project preview" },
   },
   {
-    title: "EazyGrad",
-    subtitle: "EdTech Startup",
+    title: "Online Cake Shopping",
+    subtitle: "E-Commerce Website",
     description:
-      "Revamped the site into a highly responsive, interactive experience. Led new feature delivery with PM and UX partners.",
+      "An online cake shopping platform enables users to conveniently browse, customize, and order a variety of cakes with secure payments and timely delivery for every occasion.",
     tags: [
       "node.js",
       "express.js",
       "mongoDB",
       "mongoDBAtlas",
-      "ejs",
-      "swiper.js",
+      "rect.js",
+      "tailwindcss",
       "html",
       "css",
       "javascript",
-      "lighthouse",
+      "bootstrap",
       "figma",
     ],
     align: "right",
-    image: { src: "/window.svg", alt: "EazyGrad project preview" },
+    theme: {
+      primary: "#ec4899",
+      accent: "#ec4899",
+      line: "#ec4899",
+      chipBg: "rgba(236,72,153,0.15)",
+    },
+    image: { src: "/cakeShopping.png", alt: "cake shopping project preview" },
+  },
+  {
+    title: "E-LearnVerse",
+    subtitle: "Online Learning Platform",
+    description:
+      "An online learning platform provides flexible access to courses and resources, enabling users to learn new skills anytime, anywhere through a structured and interactive experience.",
+    tags: [
+      "node.js",
+      "express.js",
+      "mongoDB",
+      "mongoDBAtlas",
+      "rect.js",
+      "tailwindcss",
+      "html",
+      "css",
+      "javascript",
+      "bootstrap",
+      "figma",
+    ],
+    align: "right",
+    theme: {
+      primary: "#6366f1",
+      accent: "#6366f1",
+      line: "#6366f1",
+      chipBg: "rgba(99,102,241,0.15)",
+    },
+    image: { src: "/learnVerse.png", alt: "e-learnVerse project preview" },
   },
 ];
 
@@ -63,10 +110,13 @@ export default function Projects() {
       id="projects"
       className="relative w-full overflow-hidden px-6 pt-10 pb-20 sm:px-10 lg:pb-24"
     >
-      <div className="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-[#1f7a8c]" />
+      {/* vertical timeline line – desktop only */}
+      <div className="absolute left-1/2 top-0 bottom-0 hidden w-0.5 -translate-x-1/2 bg-[#1f7a8c] lg:block" />
+
+      {/* header */}
       <div className="mb-12 -mt-12 flex justify-center">
-        <div className="relative inline-flex items-center justify-center border-[3px] border-[#1f7a8c] bg-white px-10 py-3 shadow-sm">
-          <h2 className="text-4xl font-extrabold tracking-tight text-[#1f7a8c]">
+        <div className="relative inline-flex items-center justify-center border-[3px] border-[#1f7a8c] bg-white px-10 py-3 shadow-sm sm:px-8 sm:py-2.5 md:px-10 md:py-3 whitespace-nowrap">
+          <h2 className="font-extrabold tracking-tight text-[#1f7a8c] text-2xl sm:text-3xl md:text-4xl">
             Latest Works
           </h2>
         </div>
@@ -82,12 +132,15 @@ export default function Projects() {
                 key={project.title}
                 className="relative grid items-center gap-10 lg:grid-cols-2"
               >
+                {/* horizontal connecting line – desktop only */}
                 <span
-                  className={`pointer-events-none absolute top-1/2 hidden h-[3px] w-1/2 -translate-y-1/2 bg-[#f6a192] lg:block ${
+                  style={{ backgroundColor: project.theme?.line }}
+                  className={`pointer-events-none absolute top-1/2 hidden h-[3px] w-1/2 -translate-y-1/2 lg:block ${
                     isImageLeft ? "right-1/2" : "left-1/2"
                   }`}
                 />
 
+                {/* image / computer frame */}
                 <div
                   className={`relative flex justify-center ${
                     isImageLeft
@@ -95,8 +148,9 @@ export default function Projects() {
                       : "lg:order-2 lg:justify-end"
                   }`}
                 >
-                  <div className="relative rounded-3xl border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/40 backdrop-blur">
+                  <div className="relative rounded-3xl border border-white/10 bg-white/5 p-4 shadow-2xl shadow-black/40 backdrop-blur transition-transform duration-500 ease-out hover:scale-[1.10]">
                     <div className="absolute inset-4 rounded-3xl bg-linear-to-br from-white/5 via-white/10 to-white/5 blur-2xl" />
+
                     <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0f1116]">
                       <div className="flex items-center justify-between bg-white/5 px-4 py-3 text-white/60">
                         <div className="flex gap-2">
@@ -108,6 +162,7 @@ export default function Projects() {
                           preview
                         </span>
                       </div>
+
                       <div className="relative bg-[#0b0d13]">
                         <div className="absolute inset-0 bg-linear-to-br from-[#0b0d13] via-[#0f121c] to-[#0b0d13]" />
                         <div className="relative flex items-center justify-center p-2">
@@ -125,8 +180,13 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <span className="pointer-events-none absolute left-1/2 top-1/2 hidden h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-white bg-[#f9735b] shadow-md lg:block" />
+                {/* center joining dot – desktop only */}
+                <span
+                  style={{ borderColor: project.theme?.accent }}
+                  className="pointer-events-none absolute left-1/2 top-1/2 hidden h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] bg-white shadow-md lg:block"
+                />
 
+                {/* content */}
                 <div
                   className={`space-y-4 ${
                     isImageLeft
@@ -134,15 +194,24 @@ export default function Projects() {
                       : "lg:order-1 lg:text-left"
                   }`}
                 >
-                  <div className="inline-flex items-center gap-2 rounded-full bg-[#f2994a]/15 px-4 py-2 text-sm font-semibold text-[#f2994a]">
-                    {project.subtitle}
-                  </div>
-                  <h3 className="text-3xl font-bold text-black sm:text-4xl">
+                  <h3
+                    style={{ color: project.theme?.primary }}
+                    className="text-3xl font-bold sm:text-4xl"
+                  >
                     {project.title}
                   </h3>
+
+                  <div
+                    style={{ color: project.theme?.primary }}
+                    className="inline-flex items-center gap-2 rounded-full py-2 text-sm font-semibold"
+                  >
+                    ({project.subtitle})
+                  </div>
+
                   <p className="text-base leading-relaxed text-black/75">
                     {project.description}
                   </p>
+
                   <div className="mt-3 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
