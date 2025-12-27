@@ -1,6 +1,7 @@
 "use client";
 
 import ContactSection from "@/components/sections/contact";
+import Footer from "@/components/sections/footer";
 import { Hero } from "@/components/sections/Hero";
 import Projects from "@/components/sections/Projects";
 
@@ -13,6 +14,7 @@ export default function Home() {
       <section className="relative bg-white">
         <Projects />
         <ContactSection/>
+        <Footer/>
       </section>
     </div>
   );
