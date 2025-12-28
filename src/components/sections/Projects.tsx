@@ -24,6 +24,35 @@ type Project = {
 
 const projects: Project[] = [
   {
+    title: "Baking AI Chatbot",
+    subtitle: "AI-Powered Baking Assistant",
+    description:
+      "Built a smart banking Q&A chatbot using Botpress, GenAI, and OpenAI that enables users to chat and get instant answers from bank websites and documents.",
+    tags: [
+      "react.js",
+      "express.js",
+      "node.js",
+      "LLM",
+      "mongoDB",
+      "Langchain",
+      "Vector Database",
+      "RAG Model",
+      "NLP",
+      "Botpress",
+      "OpenAI",
+      "knowledge base",
+      "LoopBack4",
+    ],
+    align: "left",
+    theme: {
+      primary: "#b9107d",
+      accent: "#b9107d",
+      line: "#b9107d",
+      chipBg: "#b9107d",
+    },
+    image: { src: "/ncellChatBot.png", alt: "ai chatbot project preview" },
+  },
+  {
     title: "CrawlDocQA",
     subtitle: "AI-Powered Document & Website Q&A App",
     description:
@@ -41,9 +70,9 @@ const projects: Project[] = [
     ],
     align: "left",
     theme: {
-      primary: "#1f7a8c",
-      accent: "#1f7a8c",
-      line: "#1f7a8c",
+      primary: "#2E23C9",
+      accent: "#2E23C9",
+      line: "#2E23C9",
       chipBg: "rgba(31,122,140,0.15)",
     },
     image: { src: "/aiChatBot.png", alt: "ai chatbot project preview" },
@@ -68,9 +97,9 @@ const projects: Project[] = [
     ],
     align: "right",
     theme: {
-      primary: "#ec4899",
-      accent: "#ec4899",
-      line: "#ec4899",
+      primary: "#0C682B",
+      accent: "#0C682B",
+      line: "#0C682B",
       chipBg: "rgba(236,72,153,0.15)",
     },
     image: { src: "/cakeShopping.png", alt: "cake shopping project preview" },
@@ -95,9 +124,9 @@ const projects: Project[] = [
     ],
     align: "right",
     theme: {
-      primary: "#6366f1",
-      accent: "#6366f1",
-      line: "#6366f1",
+      primary: "#68620C",
+      accent: "#68620C",
+      line: "#68620C",
       chipBg: "rgba(99,102,241,0.15)",
     },
     image: { src: "/learnVerse.png", alt: "e-learnVerse project preview" },
