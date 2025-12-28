@@ -66,6 +66,18 @@ const techs: Tech[] = [
 ];
 
 export default function AboutOverlay({ open, onClose }: AboutOverlayProps) {
+  /* ✅ LOCK MAIN PAGE SCROLL WHEN POPUP IS OPEN */
+  useEffect(() => {
+    if (!open) return;
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [open]);
+
+  /* ESC KEY CLOSE */
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
